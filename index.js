@@ -1,3 +1,5 @@
+const envPath = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
@@ -6,6 +8,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const expressValidator = require('express-validator');
+const dotenv = require('dotenv').config({ path: envPath });
 const routes = require('./app/routes');
 
 const sessionConfig = require('./config/session');
