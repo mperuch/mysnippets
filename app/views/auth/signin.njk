@@ -1,0 +1,16 @@
+{% extends 'layouts/default.njk' %}
+
+{% block body %}
+  <div class="auth-wrapper">
+    <div class="brand">MySnippets</div>
+    <form action="/authenticate" method="POST" class="form-signin">
+      <h1>Fazer Login</h1>
+      <input type="email" name="email" placeholder="E-mail" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <input type="password" name="password" placeholder="Senha" required="required">
+
+      <button type="submit">Entrar</button>
+
+      Ainda não tem conta?<a href="/signup">Crie aqui</a>
+    </form>
+  </div>
+  {% endblock %}

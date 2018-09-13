@@ -1,0 +1,39 @@
+<section class="snippets-list">
+  <div class="list-header">
+    <a href="javascript:void(0);" data-modal-open="#new-snippet" title="Novo Snippet">NOVO SNIPPET</a>
+  </div>
+
+  {% for snippet in snippets %}
+    <a href="/app/categories/{{ activeCategory }}/snippets/{{ snippet.uuid }}">
+      <strong>{{ snippet.title }}</strong>
+      {# <p>{{ snippet.excerpt }}</p> #}
+    </a>
+  {% else %}
+    <div class="not-found">Nenhum encontrado.</div>
+  {% endfor %}
+
+  <div class="list-footer">
+    <a href="javascript:void(0);" data-modal-open="#del-category" title="Excluir Categoria">EXCLUIR CATEGORIA</a>
+  </div>
+</section>
+
+<div class="modal" id="new-snippet">
+  <form action="/app/categories/{{ activeCategory }}/snippets/create" method="POST" class="modal-content">
+    <input type="text" name="title" placeholder="Título do snippet" required="required">
+    <div class="content-container">
+      <textarea name="content" class="mde" placeholder="Conteúdo do Snippet"></textarea>
+    </div>
+
+    <button type="submit">SALVAR SNIPPET</button>
+
+    <a href="javascript:void(0);" data-modal-close="#new-snippet">CANCELAR</a>
+  </form>
+</div>
+
+<div class="modal" id="del-category">
+  <form action="/app/categories/{{ activeCategory }}?_method=DELETE" method="POST" class="modal-content">
+    <strong class="confirm-text">Confirma a exclusão desta categoria?</strong>
+    <button type="submit">SIM</button>
+    <a href="javascript:void(0);" data-modal-close="#del-category">NÃO</a>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<nav id="main">
+  <div class="header">
+    <a href="/app/dashboard" title="Voltar para a Dashboard"><strong>MySnippets</strong></a>
+    <a href="/signout" class="exit" title="Sair do MySnippets"><div data-icon="ei-close-o" data-size="s"></div></a>
+  </div>
+
+  <div class="categories">
+    <strong>CATEGORIAS</strong>
+    <ul>
+      {% for category in categories %}
+        <li class="{% if category.uuid == activeCategory %} active {% endif %}">
+          <a href="/app/categories/{{ category.uuid }}">
+            {{ category.title }}
+            <span>{{ category.Snippets.length }}</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="not-found">Nenhuma encontrada.</li>
+      {% endfor %}
+    </ul>
+
+    <a href="javascript:void(0);" data-modal-open="#new-category" title="Nova Categoria">NOVA CATEGORIA</a>
+  </div>
+</nav>
+
+<div class="modal" id="new-category">
+  <form action="/app/categories/create" method="POST" class="modal-content">
+    <input type="text" name="title" placeholder="Título da categoria" required="required">
+
+    <button type="submit">SALVAR CATEGORIA</button>
+
+    <a href="javascript:void(0);" data-modal-close="#new-category">CANCELAR</a>
+  </form>
+</div>
