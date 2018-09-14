@@ -19,7 +19,7 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(256),
       },
       createdAt: {
         allowNull: false,

@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface, DataTypes) => {
     queryInterface.createTable('Sessions', {
       sid: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(128),
         allowNull: false,
         primariKey: true,
       },

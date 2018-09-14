@@ -12,16 +12,16 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(128),
       },
       email: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(128),
         unique: true,
       },
       password: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(128),
       },
       createdAt: {
         allowNull: false,
