@@ -8,7 +8,7 @@
     <strong>CATEGORIAS</strong>
     <ul>
       {% for category in categories %}
-        <li class="{% if category.uuid == activeCategory %} active {% endif %}">
+        <li class="{% if category.uuid == activeCategory.uuid %} active {% endif %}">
           <a href="/app/categories/{{ category.uuid }}">
             {{ category.title }}
             <span>{{ category.Snippets.length }}</span>
@@ -30,5 +30,15 @@
     <button type="submit">SALVAR CATEGORIA</button>
 
     <a href="javascript:void(0);" data-modal-close="#new-category">CANCELAR</a>
+  </form>
+</div>
+
+<div class="modal" id="edit-category">
+  <form action="/app/categories/{{ activeCategory.uuid }}?_method=PUT" method="POST" class="modal-content">
+    <input type="text" name="title" placeholder="Título da categoria" value="{{ activeCategory.title }}" required="required">
+
+    <button type="submit">SALVAR CATEGORIA</button>
+
+    <a href="javascript:void(0);" data-modal-close="#edit-category">CANCELAR</a>
   </form>
 </div>

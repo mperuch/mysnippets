@@ -41,7 +41,7 @@ module.exports = {
       const snippet = await Snippet.findOne({ where: { uuid } });
 
       return res.render('snippets/show', {
-        activeCategory: categoryUuid,
+        activeCategory: category,
         categories,
         snippets,
         currentSnippet: snippet,

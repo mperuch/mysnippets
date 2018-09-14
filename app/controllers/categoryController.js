@@ -16,7 +16,7 @@ module.exports = {
         where: { CategoryId: category.id },
       });
 
-      return res.render('categories/show', { categories, snippets, activeCategory: category.uuid });
+      return res.render('categories/show', { categories, snippets, activeCategory: category });
     } catch (err) {
       return next(err);
     }
@@ -32,6 +32,19 @@ module.exports = {
 
       // req.flash('success', 'Categoria criada com sucesso.');
 
+      return res.redirect(`/app/categories/${category.uuid}`);
+    } catch (err) {
+      return next(err);
+    }
+  },
+
+  async update(req, res, next) {
+    try {
+      const category = await Category.findOne({ where: { uuid: req.params.uuid } });
+
+      await category.update(req.body);
+
+      // req.flash('success', 'Snippet atualizado com sucesso.');
       return res.redirect(`/app/categories/${category.uuid}`);
     } catch (err) {
       return next(err);

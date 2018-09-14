@@ -37,6 +37,7 @@ routes.get('/app/dashboard', dashboardController.index);
  */
 routes.get('/app/categories/:uuid', categoryController.show);
 routes.post('/app/categories/create', categoryController.store);
+routes.put('/app/categories/:uuid', categoryController.update);
 routes.delete('/app/categories/:uuid', categoryController.destroy);
 
 /**

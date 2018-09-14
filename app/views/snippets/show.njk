@@ -8,11 +8,6 @@
     <section class="snippet-content">
       <div class="actions">
         <a href="javascript:void(0);" data-modal-open="#edit-snippet" class="edit" title="Editar Snippet"><div data-icon="ei-pencil" data-size="s"></div></a>
-
-        {# <form action="/app/categories/{{ activeCategory }}/snippets/{{ currentSnippet.id }}?_method=DELETE" method="POST">
-          <button type="submit" title="Excluir Snippet"><div data-icon="ei-trash" data-size="s"></div></button>
-        </form> #}
-
         <a href="javascript:void(0);" class="del-snippet" data-modal-open="#del-snippet" title="Excluir Snippet"><div data-icon="ei-trash" data-size="s"></div></a>
       </div>
 
@@ -21,7 +16,7 @@
     </section>
 
     <div class="modal" id="edit-snippet">
-      <form action="/app/categories/{{ activeCategory }}/snippets/{{ currentSnippet.uuid }}?_method=PUT" method="POST" class="modal-content">
+      <form action="/app/categories/{{ activeCategory.uuid }}/snippets/{{ currentSnippet.uuid }}?_method=PUT" method="POST" class="modal-content">
         <input type="text" name="title" placeholder="Título do snippet" value="{{ currentSnippet.title }}">
         <div class="content-container">
           <textarea name="content" class="mde" placeholder="Conteúdo do Snippet">{{ currentSnippet.content }}</textarea>
@@ -34,7 +29,7 @@
     </div>
 
     <div class="modal" id="del-snippet">
-      <form action="/app/categories/{{ activeCategory }}/snippets/{{ currentSnippet.uuid }}?_method=DELETE" method="POST" class="modal-content">
+      <form action="/app/categories/{{ activeCategory.uuid }}/snippets/{{ currentSnippet.uuid }}?_method=DELETE" method="POST" class="modal-content">
         <strong class="confirm-text">Confirma a exclusão deste snippet?</strong>
         <button type="submit">SIM</button>
         <a href="javascript:void(0);" data-modal-close="#del-snippet">NÃO</a>
